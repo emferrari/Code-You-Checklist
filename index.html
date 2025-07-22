@@ -9,18 +9,24 @@
     <main>
         <header>
             <h1>Checklist</h1>
+            <button type="button">+</button>
         </header>
 
         <section>
-            <ul id="task-list">
+            <ul>
+                <li>
+                    <input type="checkbox" />
+                    <!-- this need js function, only an example -->
+                </li>
                 <!-- tasks will appear here -->
             </ul>
         </section>
 
-        <form>
-            <input type="text" id="new-task" placeholder="Add a new task" />
-            <button type="submit">+</button>
+        <form style="display: none;">
+            <input type="text" placeholder="Add a new task" />
         </form>
+
+        <button type="button">Clear</button>
 
 
 
