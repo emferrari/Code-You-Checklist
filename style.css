@@ -78,6 +78,21 @@ ul li input[type="checkbox"] {
     position: relative;
     top: 9px;
 }
+.edit-btn,
+.delete-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+}
+
+.edit-btn,
+.delete-btn {
+    opacity: 0.6;
+}
 
 .clear-btn {
     font-family: inherit;
