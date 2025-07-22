@@ -45,6 +45,15 @@ form.addEventListener("submit", (e) => {
     li.appendChild(editBtn);
     li.appendChild(deleteBtn);
 
+    //delete functionality
+    deleteBtn.addEventListener("click", () => {
+        li.style.transition = "opacity 0.5s";
+        li.style.opacity = "0";
+        setTimeout(() => {
+            li.remove();
+        }, 500);
+    });
+
     //add the list item to the list
     taskList.appendChild(li);
 
