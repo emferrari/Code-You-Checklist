@@ -54,6 +54,33 @@ form.addEventListener("submit", (e) => {
         }, 500);
     });
 
+    //edit functionality
+    editBtn.addEventListener("click", () => {
+        const inputEdit = document.createElement("input");
+        inputEdit.type = "text";
+        inputEdit.value = span.textContent;
+        inputEdit.className = "task-input";
+
+        //replace span with input
+        li.replaceChild(inputEdit, span);
+        inputEdit.focus();
+
+        //Save on enter or blur
+        const saveEdit = () => {
+            if (inputEdit.value.trim() !== "") {
+                span.textContent = inputEdit.value.trim();
+            }
+            li.replaceChild(span, inputEdit);
+        };
+        
+        inputEdit.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                saveEdit();
+            }
+        });
+        inputEdit.addEventListener("blur", saveEdit);
+    });
+
     //add the list item to the list
     taskList.appendChild(li);
 

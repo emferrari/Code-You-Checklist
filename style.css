@@ -125,3 +125,14 @@ form input[type = "text"] {
     border-bottom: 2px solid #aaa;
     outline: none;
 }
+
+.task-input {
+    font-family: inherit;
+    font-size: 1.3rem;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    background: transparent;
+    color: inherit;
+    width: 100%;
+    outline: none;
+}
