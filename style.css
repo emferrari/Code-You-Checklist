@@ -3,7 +3,10 @@ main {
     display: flex;
     justify-content: center;
 }
-
+body {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+}
 body {
     margin: 0;
     padding: 0;
