@@ -19,6 +19,13 @@ body {
 
 .checklist-box {
     background-color: #fff8dc;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        #fff8dc,
+        #fff8dc 28px,
+        #d3c8a8 28px,
+        #d3c8a8 29px
+    );
     padding: 3rem;
     max-width: 400px;
     min-height: 500px;
@@ -26,5 +33,6 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     line-height: 1.6;
+
     
 }
