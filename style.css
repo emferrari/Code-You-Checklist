@@ -3,6 +3,29 @@ main {
     display: flex;
     justify-content: center;
 }
+h1 {
+    margin:0
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: -0.2rem;
+    margin-bottom: 1.5rem;
+}
+.add-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+.add-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 body {
     font-family: 'Caveat', cursive;
     font-size: 1.5rem;
@@ -30,7 +53,7 @@ body {
         #d3c8a8 29px
     );
     padding: 3rem;
-    max-width: 400px;
+    max-width: 300px;
     min-height: 500px;
     width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
