@@ -113,3 +113,15 @@ ul li input[type="checkbox"] {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+form input[type = "text"] {
+    width: 90%;
+    padding: 0.5rem;
+    margin: 1rem auto;
+    display: block;
+    font-family: 'Caveat', cursive; 
+    font-size: 1.3rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #aaa;
+    outline: none;
+}
