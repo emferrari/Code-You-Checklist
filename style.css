@@ -1,3 +1,9 @@
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -9,4 +15,16 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #e0e0e0;
+}
+
+.checklist-box {
+    background-color: #fff8dc;
+    padding: 3rem;
+    max-width: 400px;
+    min-height: 500px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    line-height: 1.6;
+    
 }
