@@ -95,4 +95,21 @@ form.addEventListener("submit", (e) => {
 
 });
 
+const clearBtn = document.querySelector(".clear-btn");
+
+clearBtn.addEventListener("click", () => {
+    const allTasks = document.querySelectorAll("ul li");
+    
+    allTasks.forEach((li, index) => {
+        li.classList.add("fade-out");
+        li.style.transition = "opacity 0.5s";
+        li.style.opacity = "0";
+        setTimeout(() => {
+            li.remove();
+        }, 500 + index * 100);
+    })
 });
+
+});
+
+
