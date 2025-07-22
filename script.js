@@ -88,6 +88,11 @@ form.addEventListener("submit", (e) => {
     input.value = "";
     form.style.display = "none";
 
+    //checkbok functionality
+    checkbox.addEventListener("change", () => {
+        span.classList.toggle("completed", checkbox.checked);
+    });
+
 });
 
 });
