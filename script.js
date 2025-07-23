@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const taskList = document.querySelector ("ul");
 
+//Load from localStorage
+const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+tasks = savedTasks;
+tasks.forEach(tasks => renderTask(task));
+
 function renderTask (taskObj) {
     console.log("rendering", taskObj);
     //Create the list item element
