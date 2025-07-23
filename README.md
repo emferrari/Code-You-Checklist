@@ -34,6 +34,7 @@ It lets you add tasks, mark them complete, edit them, and delete them. Your task
 
 ## Author
 
-Emanuel Ferrari
-Made for Code:You in Kentucky - https://code-you.org/
+Emanuel Ferrari  
+Made for Code:You in Kentucky - https://code-you.org/  
 GitHub: https://github.com/emferrari
+
