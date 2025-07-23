@@ -1,3 +1,5 @@
+let tasks = [];
+
 document.addEventListener("DOMContentLoaded", () => {
     const addBtn = document.querySelector(".add-btn");
     const form = document.querySelector("form");
@@ -10,40 +12,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const taskList = document.querySelector ("ul");
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault(); //stop page reload
-    const taskText = input.value.trim();
+function renderTask (taskObj) {
+    console.log("rendering", taskObj);
+    //Create the list item element
+    const li = document.createElement("li")
 
-    if (taskText === "") return; //do nothing if empty
-
-    //create new list item
-    const li = document.createElement("li");
-
-    //add checkbox
+    //Create the checkbox input
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
+    checkbox.checked = taskObj.completed // mark as checked if completed before
 
-    //add task text
+    //create the span to display the task text
     const span = document.createElement("span");
-    span.textContent = taskText;
+    span.textContent = taskObj.text;
 
-    //add edit button
+    //if task mark completed
+    if (taskObj.completed) {
+        span.classList.add("completed");
+    }
+
+    //create edit button
     const editBtn = document.createElement("button");
     editBtn.className = "edit-btn";
     editBtn.type = "button";
     editBtn.textContent = "✎";
 
-    //add delete button
+    //create delete button
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "delete-btn";
     deleteBtn.type = "button";
     deleteBtn.textContent = "🗑️";
 
-    //add everything to the list item
+    //add all elements to the list item
     li.appendChild(checkbox);
     li.appendChild(span);
     li.appendChild(editBtn);
     li.appendChild(deleteBtn);
+
+    //add the list item to the task list in the DOM
+    taskList.appendChild(li)
 
     //delete functionality
     deleteBtn.addEventListener("click", () => {
@@ -52,49 +59,75 @@ form.addEventListener("submit", (e) => {
         setTimeout(() => {
             li.remove();
         }, 500);
+
+        //remove from rasks array and update localstorage
+        tasks = tasks.filter(t => t.id !== taskObj.id);
+        localStorage.setItem("tasks", JSON.stringify(tasks))
     });
 
-    //edit functionality
+    // Edit button fucntionality
     editBtn.addEventListener("click", () => {
+        // Create an input box pre-filled with the task text
         const inputEdit = document.createElement("input");
         inputEdit.type = "text";
         inputEdit.value = span.textContent;
         inputEdit.className = "task-input";
 
-        //replace span with input
+        // Replace the text span with the input field
         li.replaceChild(inputEdit, span);
         inputEdit.focus();
 
-        //Save on enter or blur
+        // Save changes when Enter key pressed
         const saveEdit = () => {
-            if (inputEdit.value.trim() !== "") {
-                span.textContent = inputEdit.value.trim();
+            const newText = inputEdit.value.trim();
+            if (newText !== "") {
+                span.textContent = newText;
+                taskObj.text = newText; 
+                localStorage.setItem("tasks", JSON.stringify(tasks)); // save update
             }
-            li.replaceChild(span, inputEdit);
+            li.replaceChild(span, inputEdit); // replace input with updated text
         };
-        
+
         inputEdit.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                saveEdit();
-            }
+            if (e.key === "Enter") saveEdit();
         });
         inputEdit.addEventListener("blur", saveEdit);
     });
 
-    //add the list item to the list
-    taskList.appendChild(li);
-
-    //clear input and hide form
-    input.value = "";
-    form.style.display = "none";
-
-    //checkbok functionality
-    checkbox.addEventListener("change", () => {
+    // Handle checkbox toggle: strike through and update completed status
+        checkbox.addEventListener("change", () => {
         span.classList.toggle("completed", checkbox.checked);
+        taskObj.completed = checkbox.checked; // update object
+        localStorage.setItem("tasks", JSON.stringify(tasks)); // save change
     });
+};
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault(); //stop page reload
+    const taskText = input.value.trim();
+
+    if (taskText === "") return; //do nothing if empty
+
+    
+    //Create task object 
+    const newTask = {
+        id: Date.now(),
+        text: taskText,
+        completed: false
+    };
+    //Save to array and localStorage
+    tasks.push(newTask);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    renderTask(newTask);
+
+    input.value = "";
+    form.style.display = "none"
+    input.blur();
 
 });
 
+//Clear functionality
 const clearBtn = document.querySelector(".clear-btn");
 
 clearBtn.addEventListener("click", () => {
