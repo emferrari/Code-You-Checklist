@@ -15,7 +15,7 @@ const taskList = document.querySelector ("ul");
 //Load from localStorage
 const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
 tasks = savedTasks;
-tasks.forEach(tasks => renderTask(task));
+tasks.forEach(task => renderTask(task));
 
 function renderTask (taskObj) {
     console.log("rendering", taskObj);
@@ -146,6 +146,9 @@ clearBtn.addEventListener("click", () => {
             li.remove();
         }, 500 + index * 100);
     })
+    //Clear memory and localStorage
+    tasks = [];
+    localStorage.removeItem("tasks");
 });
 
 });
