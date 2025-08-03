@@ -141,3 +141,22 @@ form input[type = "text"] {
     text-decoration: line-through;
     opacity: 0.6;
 }
+
+.reset-btn {
+    font-family: inherit;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #000;
+    transition: background-color 0.2s ease;
+}
+
+.reset-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}

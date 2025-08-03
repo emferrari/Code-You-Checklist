@@ -151,6 +151,24 @@ clearBtn.addEventListener("click", () => {
     localStorage.removeItem("tasks");
 });
 
+// Reset functionality
+const resetBtn = document.querySelector(".reset-btn");
+
+resetBtn.addEventListener("click", () => {
+    const checkboxes = document.querySelectorAll("ul li input[type='checkbox']");
+    const spans = document.querySelectorAll("ul li span");
+
+    checkboxes.forEach((checkbox, index) => {
+        checkbox.checked = false;
+        spans[index].classList.remove("completed");
+        if (tasks[index]) {
+            tasks[index].completed = false;
+        }
+    });
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+});
+
 });
 
 
